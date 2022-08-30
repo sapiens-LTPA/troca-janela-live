@@ -5,15 +5,15 @@ import java.util.function.Function;
 public class MenuController {
 
     Function<String,Void> callBack;
-    public void janela1(){
+    public void inicio(){
         if(callBack != null){
-            callBack.apply("tabela");
+            callBack.apply("inicio");
         }
     }
 
     public void janela2(){
         if(callBack != null){
-            callBack.apply("olaMundo");
+            callBack.apply("janela2");
         }
     }
 }

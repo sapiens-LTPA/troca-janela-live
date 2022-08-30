@@ -1,5 +1,6 @@
 package com.example.trocajanelalive;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -8,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
+import java.util.List;
 
 public class PrincipalController {
     @FXML
@@ -15,7 +17,16 @@ public class PrincipalController {
     @FXML
     private FlowPane conteudo;
 
-    public Void trocarJanela(String nomeTela){
+    public Void trocarJanela(String nomeTela) {
+        try {
+            List<Node> filhos = conteudo.getChildren();
+            filhos.removeAll(filhos);
+            GeradorJanela gerador = new GeradorJanela();
+            Node janelaCriada = gerador.criaJanela(nomeTela);
+            conteudo.getChildren().add(janelaCriada);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("O nome da tela é "+nomeTela);
         return null;
     }
